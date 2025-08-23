@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+    "name": "RISCV DV Labs",
+    "build": {
+	"dockerfile": "Dockerfile"
+    },
+
+    "auths": {
+        "ghcr.io": {
+            "auth": "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"
+        }
+    },
+    
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {"golang" : "latest"},
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    "initializeCommand": "docker login ghcr.io -u puneet -p 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 && echo LOGIN",
+    
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // Update PATH env variable
+    "postCreateCommand": "echo 'export PATH=$PATH:/opt/riscv/euvm-1.0-beta56-linux-x86_64/bin:/opt/riscv/freestanding/multilib/bin:/opt/riscv/spike/bin' >> ~/.bashrc && bash -c \"source ~/.bashrc\"",
+
+    // Configure tool-specific properties.
+    "customizations": {
+	// Configure properties specific to VS Code.
+	"vscode": {
+	    // Set *default* container specific settings.json values on container create.
+	    // https://stackoverflow.com/questions/74645112/github-codespace-environment-setting
+	    "settings": {
+		"workbench.colorTheme": "Monokai",
+		"debug.allowBreakpointsEverywhere": true,
+		//"cmake.useCMakePresets": "auto",
+		"makefile.configureOnOpen": true
+	    },	 
+	    "extensions": [
+		"surfer-project.surfer",
+		"ms-vscode.cpptools",
+		"ms-vscode.cpptools-extension-pack",
+		"sunshaoce.risc-v",
+		"mcu-debug.memory-view",
+		"fredericbonnet.cmake-test-adapter",
+		"cheshirekow.cmake-format",
+		"ms-vscode.makefile-tools"
+	    ]
+	}
+    }
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}

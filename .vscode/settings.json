@@ -1,0 +1,16 @@
+// https://stackoverflow.com/questions/40377654/how-to-create-and-init-vscode-in-vscode
+{
+  "terminal.integrated.env.linux": {
+    "PATH": "${env:PATH}:/opt/riscv/freestanding/multilib/bin"
+  },
+  "cmake.useCMakePresets": "auto",
+  "makefile.launchConfigurations": [
+        {
+            // There is a problem with MakeFile "Launch Target" for which we need to specify target here specifically
+            // https://github.com/microsoft/vscode-makefile-tools/issues/198#issuecomment-2243398961
+            "cwd": "/workspaces/risc_v/samples/addr_modes/i_type/jalr",
+            "binaryPath": "/workspaces/risc_v/samples/addr_modes/i_type/jalr/i_type_jalr",
+            "binaryArgs": [],
+        }
+  ]
+}

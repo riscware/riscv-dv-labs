@@ -1,0 +1,131 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build",
+        "type": "shell",
+        "options": {
+          "cwd": "${command:makefile.getLaunchTargetDirectory}",
+          "env": {
+            "PATH": "/usr/bin:/opt/riscv/freestanding/multilib/bin/"
+          }
+        },
+        "command": "make",
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "CMake Build",
+        "type": "shell",
+        "options": {
+          "cwd": "${command:cmake.launchTargetDirectory}",
+          "env": {
+            "PATH": "/usr/bin:/opt/riscv/freestanding/multilib/bin/"
+          }
+        },
+        "command": "make",
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Run QEMU",
+        "type": "shell",
+        "command": "echo 'QEMU started';qemu-system-riscv64 -machine virt -m 4000M -bios none -device loader,file=${command:makefile.launchTargetPath} -nographic -s -S",
+        "dependsOn": [
+          "Build"
+        ],
+        "isBackground": true,
+        "problemMatcher": [
+          {
+            "pattern": [
+              {
+                "regexp": ".",
+                "file": 1,
+                "location": 2,
+                "message": 3
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": ".",
+              "endsPattern": "QEMU started"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Run CMake QEMU",
+        "type": "shell",
+        "command": "echo 'QEMU started';qemu-system-riscv64 -machine virt -m 4000M -bios none -device loader,file=${command:cmake.launchTargetPath} -nographic -s -S",
+        "dependsOn": [
+          "CMake Build"
+        ],
+        "isBackground": true,
+        "problemMatcher": [
+          {
+            "pattern": [
+              {
+                "regexp": ".",
+                "file": 1,
+                "location": 2,
+                "message": 3
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": ".",
+              "endsPattern": "QEMU started"
+            }
+          }
+        ]
+      },
+      {
+        "label": "CMake Clean",
+        "type": "shell",
+        "options": {
+          "cwd": "${command:cmake.launchTargetDirectory}",
+          "env": {
+            "PATH": "/usr/bin:/opt/riscv/freestanding/multilib/bin/"
+          }
+        },
+        "command": "make clean",
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Clean",
+        "type": "shell",
+        "options": {
+          "cwd": "${command:makefile.getLaunchTargetDirectory",
+          "env": {
+            "PATH": "/usr/bin:/opt/riscv/freestanding/multilib/bin/"
+          }
+        },
+        "command": "make clean",
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+}

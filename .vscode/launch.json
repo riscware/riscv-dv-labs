@@ -1,0 +1,67 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {        
+            "name": "(make) Debug RISC-V",
+            "type": "cppdbg",
+            "request": "launch",
+            //"program": "${workspaceFolder}/samples/riscv_freestanding/c_hello/hello.elf",
+            "program": "${command:makefile.launchTargetPath}",
+            //"cwd": "${workspaceFolder}/samples/riscv_freestanding/c_hello",            
+            "cwd": "${command:makefile.getLaunchTargetDirectory}",            
+            "miDebuggerArgs" : "-q -ex 'target remote:1234'",
+            "stopAtEntry": false,
+            //"stopAtConnect":true,
+            "environment": [],
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/opt/riscv/freestanding/multilib/bin/riscv64-unknown-elf-gdb",
+            "MIMode": "gdb",
+            "preLaunchTask": "Run QEMU",
+            "postDebugTask": "Clean",
+            "launchCompleteCommand": "None",
+            "externalConsole": false       
+        },
+        {        
+            "name": "(CMake) Debug RISC-V",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": "${command:cmake.launchTargetDirectory}",
+            "miDebuggerArgs" : "-q -ex 'target remote:1234'",
+            "stopAtEntry": false,
+            "environment": [],
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/opt/riscv/freestanding/multilib/bin/riscv64-unknown-elf-gdb",
+            "MIMode": "gdb",
+            "preLaunchTask": "Run CMake QEMU",
+            "postDebugTask": "CMake Clean",
+            "launchCompleteCommand": "None",
+            "externalConsole": false       
+        }        
+    ]
+}
