@@ -6,12 +6,6 @@
 	"dockerfile": "Dockerfile"
     },
 
-    "auths": {
-        "ghcr.io": {
-            "auth": "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"
-        }
-    },
-    
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {"golang" : "latest"},
 
