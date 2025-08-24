@@ -25,19 +25,21 @@
 	    // Set *default* container specific settings.json values on container create.
 	    // https://stackoverflow.com/questions/74645112/github-codespace-environment-setting
 	    "settings": {
-		"workbench.colorTheme": "Monokai",
+		// "workbench.colorTheme": "Monokai",
 		"debug.allowBreakpointsEverywhere": true,
 		//"cmake.useCMakePresets": "auto",
 		"makefile.configureOnOpen": true
 	    },	 
 	    "extensions": [
+		"webfreak.code-d",
+		"mshr-h.VerilogHDL",
+		"zhwu95.riscv",
 		"surfer-project.surfer",
-		"ms-vscode.cpptools",
-		"ms-vscode.cpptools-extension-pack",
-		"sunshaoce.risc-v",
 		"mcu-debug.memory-view",
 		"fredericbonnet.cmake-test-adapter",
 		"cheshirekow.cmake-format",
+		"ms-vscode.cpptools",
+		"ms-vscode.cpptools-extension-pack",
 		"ms-vscode.makefile-tools"
 	    ]
 	}
