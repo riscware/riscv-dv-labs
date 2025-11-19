@@ -16,7 +16,7 @@
     
     // Use 'postCreateCommand' to run commands after the container is created.
     // Update PATH env variable
-    "postCreateCommand": "echo 'export PATH=/opt/riscv/euvm-1.0-beta56-linux-x86_64/bin:/opt/riscware/verilator/v5.039-euvm-dev/bin:/opt/riscware/spike/riscv-isa-sim-cosim-dev/bin${PATH:+:$PATH}' >> ~/.bashrc && echo 'export PKG_CONFIG_PATH=/opt/riscware/riscv-isa-sim/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}' >> ~/.bashrc && echo 'export CPLUS_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}' >> ~/.bashrc && echo 'export C_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}' >> ~/.bashrc && bash -c \"source ~/.bashrc\"",
+    "postCreateCommand": "echo 'export PATH=/opt/riscv/euvm-1.0-beta58-linux-x86_64/bin:/opt/riscware/verilator/v5.039-euvm-dev/bin:/opt/riscware/spike/riscv-isa-sim-cosim-dev/bin${PATH:+:$PATH}' >> ~/.bashrc && echo 'export PKG_CONFIG_PATH=/opt/riscware/riscv-isa-sim/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}' >> ~/.bashrc && echo 'export CPLUS_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}' >> ~/.bashrc && echo 'export C_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}' >> ~/.bashrc && bash -c \"source ~/.bashrc\"",
 
     // Configure tool-specific properties.
     "customizations": {
