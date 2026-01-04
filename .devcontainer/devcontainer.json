@@ -12,7 +12,7 @@
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
 
-    "initializeCommand": "docker login ghcr.io -u riscv-dv-workshop -p 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",
+    "initializeCommand": "docker login ghcr.io -u riscv-dv-workshop -p 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",
     
     // Use 'postCreateCommand' to run commands after the container is created.
     // Update PATH env variable
