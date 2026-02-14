@@ -40,8 +40,15 @@
 		"cheshirekow.cmake-format",
 		"ms-vscode.cpptools",
 		"ms-vscode.cpptools-extension-pack",
-		"ms-vscode.makefile-tools"
-	    ]
+		"ms-vscode.makefile-tools",
+	    "marus25.cortex-debug"
+	    ],
+		"settings": {
+        // You can also pre-configure paths inside the container
+        "cortex-debug.armToolchainPath": "/opt/riscv/riscv-gnu-toolchain/2026.01.22/bin",
+		"cortex-debug.gdbPath": "/opt/riscv/riscv-gnu-toolchain/2026.01.22/bin/riscv64-unknown-elf-gdb",
+        "cortex-debug.openocdPath": "/opt/riscv/openocd/25.10.9/bin/openocd"
+      }
 	}
     }
 
