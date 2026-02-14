@@ -41,7 +41,8 @@
 		"ms-vscode.cpptools",
 		"ms-vscode.cpptools-extension-pack",
 		"ms-vscode.makefile-tools",
-		"marus25.cortex-debug"
+		"marus25.cortex-debug",
+		"tomoki1207.pdf"
 	    ],
 		"settings": {
         // You can also pre-configure paths inside the container
