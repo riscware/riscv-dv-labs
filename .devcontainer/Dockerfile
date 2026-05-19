@@ -1,1 +1,1 @@
-FROM ghcr.io/riscware/riscv-dv-labs-env:latest
+FROM ghcr.io/riscware/cvw-docker:latest
