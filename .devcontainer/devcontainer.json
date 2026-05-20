@@ -2,9 +2,9 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
     "name": "RISC-V Labs",
-    "build": {
-	"dockerfile": "Dockerfile"
-    },
+	// Pull the image directly from GHCR instead of using a Dockerfile
+    "image": "ghcr.io/riscware/cvw-docker:latest",
+	
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {"golang" : "latest"},
 
