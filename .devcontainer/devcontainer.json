@@ -3,20 +3,7 @@
 {
     "name": "RISC-V Labs",
     // Pull the image directly from GHCR instead of using a Dockerfile
-    "build": {
-        "dockerfile": "Dockerfile",
-        // Passes your repository secret directly into the Dockerfile build process
-        "args": {
-            "GHCR_READ_TOKEN": "${secret:GHCR_READ_TOKEN}"
-        }
-    },
-
-    // Ensures Codespaces requests the token asset on environment creation
-    "secrets": {
-        "GHCR_READ_TOKEN": {
-            "description": "Token to pull the private cvw-docker image"
-        }
-    },
+    "image": "ghcr.io/riscware/cvw-docker:latest",
 
     
     // Features to add to the dev container. More info: https://containers.dev/features.
