@@ -7,7 +7,7 @@
         "dockerfile": "Dockerfile",
         // Passes your repository secret directly into the Dockerfile build process
         "args": {
-            "GHCR_READ_TOKEN": "${localEnv:GHCR_READ_TOKEN}"
+            "GHCR_READ_TOKEN": "${secret:GHCR_READ_TOKEN}"
         }
     },
 
