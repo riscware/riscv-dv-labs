@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-    "name": "RISCV DV Labs",
+    "name": "VeriFive Labs",
     "build": {
 	"dockerfile": "Dockerfile"
     },
@@ -12,11 +12,12 @@
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
 
-    "initializeCommand": "docker login ghcr.io -u riscv-dv-workshop -p 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",
-    
     // Use 'postCreateCommand' to run commands after the container is created.
     // Update PATH env variable
-    "postCreateCommand": "echo 'export PATH=/opt/riscv/euvm-1.0-beta56-linux-x86_64/bin:/opt/riscware/verilator/v5.039-euvm-dev/bin:/opt/riscware/spike/riscv-isa-sim-cosim-dev/bin${PATH:+:$PATH}' >> ~/.bashrc && echo 'export PKG_CONFIG_PATH=/opt/riscware/riscv-isa-sim/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}' >> ~/.bashrc && echo 'export CPLUS_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}' >> ~/.bashrc && echo 'export C_INCLUDE_PATH=/opt/riscware/riscv-isa-sim/include${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}' >> ~/.bashrc && bash -c \"source ~/.bashrc\"",
+    "postCreateCommand": "echo 'export MODULEPATH=/opt/lmod/modulefiles' >> ~/.bashrc && echo 'source /usr/share/lmod/lmod/init/bash' >> ~/.bashrc && echo 'module load riscv/riscv-dv/latest' >> ~/.bashrc &&  bash -c 'source ~/.bashrc'",
+
+    // Update this to match your organization and package path
+    "image": "ghcr.io/verifive-workshop/riscv-dv-labs-docker:latest",
 
     // Configure tool-specific properties.
     "customizations": {
@@ -28,8 +29,15 @@
 		// "workbench.colorTheme": "Monokai",
 		"debug.allowBreakpointsEverywhere": true,
 		//"cmake.useCMakePresets": "auto",
-		"makefile.configureOnOpen": true
-	    },	 
+		"makefile.configureOnOpen": true,
+		// You can also pre-configure paths inside the container
+		"cortex-debug.armToolchainPath": "/opt/riscv/riscv-gnu-toolchain/2026.02.13/bin",
+		"cortex-debug.gdbPath": "/opt/riscv/riscv-gnu-toolchain/2026.02.13/bin/riscv64-unknown-elf-gdb",
+		"cortex-debug.openocdPath": "/opt/riscv/openocd/25.10.9/bin/openocd",
+		"cortex-debug.toolchainPrefix": "riscv64-unknown-elf",
+		"cortex-debug.objdumpPath": "/opt/riscv/riscv-gnu-toolchain/2026.02.13/bin/riscv64-unknown-elf-objdump",
+		"cortex-debug.nmPath": "/opt/riscv/riscv-gnu-toolchain/2026.02.13/bin/riscv64-unknown-elf-nm"
+	    },
 	    "extensions": [
 		"webfreak.code-d",
 		"mshr-h.VerilogHDL",
@@ -40,9 +48,20 @@
 		"cheshirekow.cmake-format",
 		"ms-vscode.cpptools",
 		"ms-vscode.cpptools-extension-pack",
-		"ms-vscode.makefile-tools"
+		"ms-vscode.makefile-tools",
+		"marus25.cortex-debug",
+		"tomoki1207.pdf"
 	    ]
-	}
+	},
+	"codespaces": {
+	    "repositories": {
+		"verifive-workshop/riscv-dv-labs": {
+		    "permissions": {
+			"packages": "read"
+		    }
+		}
+	    }
+	}	
     }
 
     // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
