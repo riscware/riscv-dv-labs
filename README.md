@@ -1,3 +1,3 @@
-# riscv-dv-labs
+# verifive-labs
 
-Lab Environment for RISC-V DV Workshop.
+Lab Environment for VeriFive Workshop.
